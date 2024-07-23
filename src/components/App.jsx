@@ -5,6 +5,7 @@ import { Login } from "../pages/Login.jsx"
 import { Register } from '../pages/Register.jsx'
 import { UserWines } from "./UserWineList.jsx"
 import { AllWines } from "./WineList.jsx"
+import { WineDetails } from "./WineDetails.jsx"
 
 
 
@@ -19,7 +20,10 @@ export const App = () => {
 
             <Route element={<Authorized />}>
                 <Route path="/mywines" element={<UserWines showAll={false} />} />
+                <Route path="/wines/:wineId" element={<WineDetails />} />
                 <Route path="/allwines" element={<AllWines showAll={true} />} />
+                <Route path="/allwines/:wineId" element={<WineDetails />} />
+
 
 
             </Route>
