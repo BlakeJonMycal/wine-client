@@ -21,7 +21,7 @@ export const Login = () => {
             .then(authInfo => {
                 if (authInfo && authInfo.token) {
                     localStorage.setItem("wine_token", JSON.stringify(authInfo))
-                    navigate("/")
+                    navigate("/mywines")
                 } else {
                     existDialog.current.showModal()
                 }
