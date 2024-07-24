@@ -107,9 +107,10 @@ export const WineForm = () => {
             <div>
                 <label>Rating</label>
                 <select name="rating" value={formData.rating} onChange={handleChange} required>
-                     {[...Array(5).keys()].map(num => (
+                    <option value="" disabled>Choose a rating</option>
+                    {[...Array(5).keys()].map(num => (
                         <option key={num} value={num + 1}>{num + 1}</option>
-                     ))}
+                    ))}
                 </select>
             </div>
             <div>
