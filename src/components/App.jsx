@@ -6,6 +6,7 @@ import { Register } from '../pages/Register.jsx'
 import { UserWines } from "./UserWineList.jsx"
 import { AllWines } from "./WineList.jsx"
 import { WineDetails } from "./WineDetails.jsx"
+import { WineForm } from "./WineForm.jsx"
 
 
 
@@ -23,6 +24,7 @@ export const App = () => {
                 <Route path="/wines/:wineId" element={<WineDetails />} />
                 <Route path="/allwines" element={<AllWines showAll={true} />} />
                 <Route path="/allwines/:wineId" element={<WineDetails />} />
+                <Route path="/addwine" element={<WineForm />} />
 
 
 
