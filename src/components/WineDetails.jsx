@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 export const WineDetails = () => {
     const { wineId } = useParams();
     const [wine, setWine] = useState(null);
+    const navigate = useNavigate()
 
     const getWineDetailsFromAPI = async () => {
         const response = await fetch(`http://localhost:8000/wines/${wineId}`, {
@@ -18,6 +19,22 @@ export const WineDetails = () => {
     useEffect(() => {
         getWineDetailsFromAPI();
     }, [wineId]);
+
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/wines/${wineId}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Token ${JSON.parse(localStorage.getItem("wine_token")).token}`
+                }
+            })
+            if (response.status === 204) {
+                navigate('/mywines')
+            }
+        }catch (error) {
+        console.error('Error Deleting Wine', error)
+        } 
+    }
 
     if (!wine) {
         return <div>Loading...</div>;
@@ -40,6 +57,14 @@ export const WineDetails = () => {
                     <li key={style.id}>{style.name}</li>
                 ))}
             </ul>
+            {wine.is_owner && (
+                <button 
+                    onClick={handleDelete}
+                    className="border border-solid bg-red-700 text-white p-1 mt-4"
+                >
+                    Delete
+                </button>
+            )}
         </div>
     );
 }
