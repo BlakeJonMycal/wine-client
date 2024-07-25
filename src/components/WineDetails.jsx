@@ -58,12 +58,20 @@ export const WineDetails = () => {
                 ))}
             </ul>
             {wine.is_owner && (
-                <button 
-                    onClick={handleDelete}
-                    className="border border-solid bg-red-700 text-white p-1 mt-4"
-                >
-                    Delete
-                </button>
+                <div>
+                    <button 
+                        onClick={handleDelete}
+                        className="border border-solid bg-red-700 text-white p-1 mt-4"
+                    >
+                        Delete
+                    </button>
+                    <button
+                        onClick={() => navigate(`/editwine/${wineId}`)}
+                        className="border border-solid bg-blue-700 text-white p-1 mt-4 ml-4"
+                    >
+                        Edit
+                    </button>
+                </div>
             )}
         </div>
     );

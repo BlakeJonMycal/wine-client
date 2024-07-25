@@ -18,18 +18,17 @@ export const NavBar = () => {
       <Link to="/myprofile">My Profile</Link>
     </li>
     {localStorage.getItem("wine_token") ? (
-      <li className="navbar-item navbar-logout">
-        <Link
-          className="navbar-link"
-          to=""
-          onClick={() => {
-            localStorage.removeItem("wine_token")
-            navigate("/login", { replace: true })
-          }}
-        >
-          Logout
-        </Link>
-      </li>
+        <li className="navbar-item navbar-logout">
+          <button
+            className="navbar-link"
+            onClick={() => {
+              localStorage.removeItem("wine_token");
+              navigate("/login", { replace: true });
+            }}
+          >
+            Logout
+          </button>
+        </li>
     ) : (
       ""
     )}
