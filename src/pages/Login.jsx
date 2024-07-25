@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react"
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Login.css"
 
 export const Login = () => {
@@ -7,6 +7,15 @@ export const Login = () => {
     const [password, setPassword] = useState("")
     const existDialog = useRef()
     const navigate = useNavigate()
+    const location = useLocation()
+    
+    useEffect(() => {
+        if (location.state?.resetForm) {
+            setUsername('');
+            setPassword('');
+        }
+
+    }, [location]);
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -46,7 +55,8 @@ export const Login = () => {
                             onChange={evt => setUsername(evt.target.value)}
                             className="form-control"
                             placeholder="Username"
-                            required autoFocus />
+                            required autoFocus
+                            autoComplete="off" />
                     </fieldset>
                     <fieldset className="mb-4">
                         <label htmlFor="inputPassword"> Password </label>
@@ -55,7 +65,7 @@ export const Login = () => {
                             onChange={evt => setPassword(evt.target.value)}
                             className="form-control"
                             placeholder="Password"
-                        />
+                            autoComplete="off" />
                     </fieldset>
                     <fieldset>
                         <button type="submit" className="button p-3 rounded-md bg-blue-800 text-blue-100">
