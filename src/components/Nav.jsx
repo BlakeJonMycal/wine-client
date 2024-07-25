@@ -15,7 +15,7 @@ export const NavBar = () => {
       <Link to="/addwine">Add A Wine</Link>
     </li>
     <li className="navbar-item">
-      <Link to="/myprofile">My Profile</Link>
+      <Link to="/profile">My Profile</Link>
     </li>
     {localStorage.getItem("wine_token") ? (
         <li className="navbar-item navbar-logout">
@@ -23,7 +23,7 @@ export const NavBar = () => {
             className="navbar-link"
             onClick={() => {
               localStorage.removeItem("wine_token");
-              navigate("/login", { replace: true });
+              navigate("/login", { replace: true, state: { resetForm: true } });
             }}
           >
             Logout

@@ -8,6 +8,7 @@ import { AllWines } from "./WineList.jsx"
 import { WineDetails } from "./WineDetails.jsx"
 import { WineForm } from "./WineForm.jsx"
 import { EditWineForm } from "./EditWineForm.jsx"
+import { Profile } from "./Profile"
 
 
 export const App = () => {
@@ -26,6 +27,7 @@ export const App = () => {
                 <Route path="/allwines/:wineId" element={<WineDetails />} />
                 <Route path="/addwine" element={<WineForm />} />
                 <Route path="/editwine/:wineId" element={<EditWineForm />} />
+                <Route path="/profile" element={<Profile />} />
 
 
             </Route>

@@ -54,7 +54,7 @@ export const Register = () => {
                             value={firstName}
                             onChange={evt => setFirstName(evt.target.value)}
                             className="form-control"
-                            placeholder=""
+                            placeholder="First Name"
                             required autoFocus />
                     </fieldset>
                     <fieldset className="mb-4">
@@ -63,7 +63,7 @@ export const Register = () => {
                             value={lastName}
                             onChange={evt => setLastName(evt.target.value)}
                             className="form-control"
-                            placeholder=""
+                            placeholder="Last name"
                             required autoFocus />
                     </fieldset>
                     <fieldset className="mb-4">
@@ -82,7 +82,8 @@ export const Register = () => {
                             onChange={evt => setUsername(evt.target.value)}
                             className="form-control"
                             placeholder="Username"
-                            required autoFocus />
+                            required autoFocus
+                            autoComplete="off" />
                     </fieldset>
                     <fieldset className="mb-4">
                         <label htmlFor="inputPassword"> Password </label>
@@ -91,6 +92,7 @@ export const Register = () => {
                             onChange={evt => setPassword(evt.target.value)}
                             className="form-control"
                             placeholder="Password"
+                            autoComplete="off"
                         />
                     </fieldset>
                     <fieldset>
