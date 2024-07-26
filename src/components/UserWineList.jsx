@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import "./WineList.css"
 
 export const UserWines = () => {
     const [userWines, setUserWines] = useState([])
@@ -20,26 +21,27 @@ export const UserWines = () => {
     const displayUserWines = () => {
         if (userWines && userWines.length) {
             return userWines.map(userWine => (
-                <div key={`key-${userWine.id}`} className="border p-5 border-solid hover:bg-fuchsia-500 hover:text-violet-50 rounded-md border-violet-900 mt-5 bg-slate-50">
+                <div key={`key-${userWine.id}`} className="cellar-card">
+                    <Link to={`/wines/${userWine.id}`}>
+                        <img src={userWine.image_url} alt={userWine.name} className="wine-image" />
+                    </Link>
                     <div>
-                        <Link to={`/wines/${userWine.id}`} className="text-blue-500 hover:underline">
+                        <Link to={`/wines/${userWine.id}`} className="cellar-card-link">
                             {userWine.name}
                         </Link>
                     </div>
-                 </div>
-            ))
+                </div>
+            ));
         }
-    } 
+    };
     
 
     return (
-        <>
-            <h1 className="text-3xl">My Cellar</h1>
-            {displayUserWines()}
-        </>
+        <section className="cellar-page">
+            <h1 className="cellar-title"></h1>
+            <section className="cellar-container">
+                {displayUserWines()}
+            </section>
+        </section>
     )
-
-
-
-
 } 

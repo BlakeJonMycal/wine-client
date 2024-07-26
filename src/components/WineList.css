@@ -1,0 +1,64 @@
+.cellar-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f4f7;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .cellar-title {
+    background-color: #f2f4f7;
+    color: #888279;
+    margin-left: 30px;
+    align-self: flex-start;
+    font-style: italic;
+    font-size: larger;
+    padding-bottom: 1em;
+  }
+  
+  .cellar-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .cellar-card {
+    flex-basis: 25%;
+    text-align: center;
+    margin-bottom: 1.5em;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    background-color: #f2f4f7;
+    padding: 1em;
+    box-shadow: 10px 10px 10px 2px #888279;
+  }
+  
+  .cellar-card:hover {
+    transform: translateY(-10px);
+    background-color: #f7f4f2;
+    color: #533339;
+  }
+  
+  .cellar-card-link {
+    color: #1D1D1D;
+    text-decoration: none;
+    font-size: 1.25em;
+  }
+  
+  .cellar-card-link:hover {
+    text-decoration: underline;
+    color: #888279;
+  }
+  .wine-image {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 2.5px solid #653642;
+    margin-bottom: .5em;
+  }
