@@ -24,6 +24,11 @@
     letter-spacing: 1px;
   }
 
+  .navbar-link,
+  .navbar-link-logout {
+    cursor: pointer;
+  }
+
   .navbar-logout {
     margin-left: auto;
   }
