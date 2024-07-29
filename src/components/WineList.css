@@ -33,7 +33,7 @@
     border-radius: 1em;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    background-color: #f7f4f2;
+    background-color: #F0EDD6;
     padding: 1em;
     box-shadow: 10px 10px 10px 2px #888279;
   }
@@ -58,7 +58,5 @@
     width: 300px;
     height: 500px;
     object-fit: cover;
-    border-radius: 25px;
-    border: 4.5px solid #653642;
     margin-bottom: .5em;
   }
