@@ -1,0 +1,31 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #F0EDD6;
+    padding: 2em;
+}
+
+.profile-info {
+    border: 2px solid #533339;
+    border-radius: 10px;
+    padding: 2em;
+    background-color: #f7f4f2;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-username {
+    font-size: 2em;
+    color: #533339;
+    margin-bottom: 0.5em;
+}
+
+.profile-email,
+.profile-name {
+    font-size: 1.2em;
+    color: #533339;
+    margin: 0.5em 0;
+}

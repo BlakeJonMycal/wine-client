@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './WineDetails.css'; 
 
 export const WineDetails = () => {
     const { wineId } = useParams();
@@ -31,8 +32,8 @@ export const WineDetails = () => {
             if (response.status === 204) {
                 navigate('/mywines')
             }
-        }catch (error) {
-        console.error('Error Deleting Wine', error)
+        } catch (error) {
+            console.error('Error Deleting Wine', error)
         } 
     }
 
@@ -41,38 +42,40 @@ export const WineDetails = () => {
     }
 
     return (
-        <div className="p-5">
-            <h1 className="text-3xl">{wine.name}</h1>
-            <img src={wine.image_url} className="wine_image" />
-            <p><strong>Region:</strong> {wine.region}</p>
-            <p><strong>Vintage:</strong> {wine.vintage}</p>
-            <p><strong>abv:</strong> {wine.abv}%</p>
-            <p><strong>Vineyard:</strong> {wine.vineyard}</p>
-            <p><strong>Grape Varieties:</strong> {wine.grape_variety}</p>
-            <p><strong>Tasting Notes:</strong> {wine.tasting_notes}</p>
-            <p><strong>Rating:</strong> {wine.rating}</p>
-            <p><strong>Styles:</strong></p>
-            <ul>
-                {wine.styles.map(style => (
-                    <li key={style.id}>{style.name}</li>
-                ))}
-            </ul>
-            {wine.is_owner && (
-                <div>
-                    <button 
-                        onClick={handleDelete}
-                        className="border border-solid bg-red-700 text-white p-1 mt-4"
-                    >
-                        Delete
-                    </button>
-                    <button
-                        onClick={() => navigate(`/editwine/${wineId}`)}
-                        className="border border-solid bg-blue-700 text-white p-1 mt-4 ml-4"
-                    >
-                        Edit
-                    </button>
-                </div>
-            )}
+        <div className="wine-details-container">
+            <div className="wine-info">
+                <h1 className="wine-title">{wine.name}</h1>
+                <p><strong>Region:</strong> {wine.region}</p>
+                <p><strong>Vintage:</strong> {wine.vintage}</p>
+                <p><strong>ABV:</strong> {wine.abv}%</p>
+                <p><strong>Vineyard:</strong> {wine.vineyard}</p>
+                <p><strong>Grape Varieties:</strong> {wine.grape_variety}</p>
+                <p><strong>Tasting Notes:</strong> {wine.tasting_notes}</p>
+                <p><strong>Rating:</strong> {wine.rating}</p>
+                <p><strong>Styles:</strong></p>
+                <ul>
+                    {wine.styles.map(style => (
+                        <li key={style.id}>{style.name}</li>
+                    ))}
+                </ul>
+                {wine.is_owner && (
+                    <div className="wine-actions">
+                        <button 
+                            onClick={handleDelete}
+                            className="delete-button"
+                        >
+                            Delete
+                        </button>
+                        <button
+                            onClick={() => navigate(`/editwine/${wineId}`)}
+                            className="edit-button"
+                        >
+                            Edit
+                        </button>
+                    </div>
+                )}
+            </div>
+            <img src={wine.image_url} className="wine-image" alt="Wine" />
         </div>
     );
 }
