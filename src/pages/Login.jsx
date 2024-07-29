@@ -1,24 +1,23 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
 
 export const Login = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const existDialog = useRef()
-    const navigate = useNavigate()
-    const location = useLocation()
-    
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const existDialog = useRef();
+    const navigate = useNavigate();
+    const location = useLocation();
+
     useEffect(() => {
         if (location.state?.resetForm) {
             setUsername('');
             setPassword('');
         }
-
     }, [location]);
 
     const handleLogin = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         fetch(`http://localhost:8000/login`, {
             method: "POST",
             body: JSON.stringify({ username, password }),
@@ -26,16 +25,16 @@ export const Login = () => {
                 "Content-Type": "application/json"
             }
         })
-            .then(res => res.json())
-            .then(authInfo => {
-                if (authInfo && authInfo.token) {
-                    localStorage.setItem("wine_token", JSON.stringify(authInfo))
-                    navigate("/mywines")
-                } else {
-                    existDialog.current.showModal()
-                }
-            })
-    }
+        .then(res => res.json())
+        .then(authInfo => {
+            if (authInfo && authInfo.token) {
+                localStorage.setItem("wine_token", JSON.stringify(authInfo));
+                navigate("/mywines");
+            } else {
+                existDialog.current.showModal();
+            }
+        });
+    };
 
     return (
         <main className="container--login">
@@ -46,8 +45,9 @@ export const Login = () => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1 className="text-4xl mt-7 mb-3">Grand Cru</h1>
-                    <h2 className="text-xl mb-10">Please sign in</h2>
+                    <div className="logo-container">
+                        <img src="/images/capstone logo.png" alt="App Logo" className="app-logo" />
+                    </div>
                     <fieldset className="mb-4">
                         <label htmlFor="inputUsername"> Username </label>
                         <input type="username" id="inputUsername"
@@ -68,7 +68,7 @@ export const Login = () => {
                             autoComplete="off" />
                     </fieldset>
                     <fieldset>
-                        <button type="submit" className="button p-3 rounded-md bg-blue-800 text-blue-100">
+                        <button type="submit" className="login-button">
                             Sign in
                         </button>
                     </fieldset>
@@ -76,9 +76,9 @@ export const Login = () => {
             </section>
             <div className="loginLinks">
                 <section className="link--register">
-                    <Link className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" to="/register">Not a member yet?</Link>
+                    <Link className="register-link" to="/register">Not a member yet?</Link>
                 </section>
             </div>
         </main>
-    )
-}
+    );
+};
