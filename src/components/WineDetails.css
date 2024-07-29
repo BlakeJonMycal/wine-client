@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 2em;
-    background-color: #f2f4f7;
+    background-color: #F0EDD6;
     height: 85vh;
 }
 
@@ -11,7 +11,7 @@
     max-width: 500px;
     border: 2px solid #533339;
     padding: 1em;
-    background-color: #f7f4f2;
+    background-color: #F0EDD6;
     border-radius: 5%;
     margin-right: 2em;
 }

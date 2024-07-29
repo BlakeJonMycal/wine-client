@@ -1,41 +1,44 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import "./WineList.css"; // Import the same CSS file as UserWines
 
 export const AllWines = () => {
-    const [allWines, setAllWines] = useState([])
-
+    const [allWines, setAllWines] = useState([]);
 
     const getAllWinesFromTheAPI = async () => {
         const response = await fetch("http://localhost:8000/wines", {
             headers: {
                 "Authorization": `Token ${JSON.parse(localStorage.getItem("wine_token")).token}`
             }
-        })
-        const parsedJSONString = await response.json()
-        setAllWines(parsedJSONString)
-    }
+        });
+        const parsedJSONString = await response.json();
+        setAllWines(parsedJSONString);
+    };
 
-    useEffect(() => { getAllWinesFromTheAPI() }, [])
+    useEffect(() => { getAllWinesFromTheAPI() }, []);
     
     const displayAllWines = () => {
         if (allWines && allWines.length) {
             return allWines.map(allWine => (
-                <div key={`key-${allWine.id}`} className="border p-5 border-solid hover:bg-fuchsia-500 hover:text-violet-50 rounded-md border-violet-900 mt-5 bg-slate-50">
+                <div key={`key-${allWine.id}`} className="cellar-card">
+                    <Link to={`/allwines/${allWine.id}`}>
+                        <img src={allWine.image_url} alt={allWine.name} className="wine-image" />
+                    </Link>
                     <div>
-                        <Link to={`/allwines/${allWine.id}`} className="text-blue-500 hover:underline">
+                        <Link to={`/allwines/${allWine.id}`} className="cellar-card-link">
                             {allWine.name}
                         </Link>
                     </div>
-                 </div>
-            ))
+                </div>
+            ));
         }
-    } 
-    
+    };
 
     return (
-        <>
-            <h1 className="text-3xl">Explore All Wines</h1>
-            {displayAllWines()}
-        </>
-    )
-}  
+        <div className="cellar-page">
+            <div className="cellar-container">
+                {displayAllWines()}
+            </div>
+        </div>
+    );
+};
