@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './Profile.css'; // Import the CSS file for the profile
 
 export const Profile = () => {
     const [profileData, setProfileData] = useState([]);
@@ -28,14 +29,14 @@ export const Profile = () => {
     useEffect(() => { getProfileDataFromApi() }, []);
 
     return (
-        <div>
+        <div className="profile-container">
             {isLoading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!isLoading && !error && (
-                <div>
-                    <h2>{profileData.username}</h2>
-                    <p>Email: {profileData.email}</p>
-                    <p>Name: {profileData.first_name} {profileData.last_name}</p>
+                <div className="profile-info">
+                    <h2 className="profile-username">{profileData.username}</h2>
+                    <p className="profile-email">Email: {profileData.email}</p>
+                    <p className="profile-name">Name: {profileData.first_name} {profileData.last_name}</p>
                 </div>
             )}
         </div>
