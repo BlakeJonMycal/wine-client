@@ -1,0 +1,60 @@
+.wine-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background-color: #f2f4f7;
+    height: 85vh;
+}
+
+.wine-info {
+    max-width: 500px;
+    border: 2px solid #533339;
+    padding: 1em;
+    background-color: #f7f4f2;
+    border-radius: 5%;
+    margin-right: 2em;
+}
+
+.wine-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: #533339;
+    margin-bottom: 1em;
+}
+
+.wine-image {
+    max-width: 500px;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 5%;
+    border: 2px solid #533339;
+}
+
+.wine-actions {
+    margin-top: 1em;
+}
+
+.delete-button, .edit-button {
+    border: 1px solid transparent;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.delete-button {
+    background-color: #533339;
+    color: white;
+    margin-right: 1em;
+}
+
+.edit-button {
+    background-color: #533339;
+    color: white;
+}
+
+.delete-button:hover, .edit-button:hover {
+    background-color: white;
+    color: #533339;
+    border: 1px solid #533339;
+}
