@@ -9,7 +9,7 @@ export const AllWines = () => {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     const getAllWinesFromTheAPI = async (region = '', name = '') => {
-        const url = "http://localhost:8000/wines";
+        let url = "http://localhost:8000/wines";
         const params = [];
 
         if (region) params.push(`region=${region}`);
@@ -74,7 +74,13 @@ export const AllWines = () => {
                             type="text"
                             placeholder="Enter region"
                             value={filterRegion}
-                            onChange={handleFilterChange}
+                            onChange={handleFilterRegionChange}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Enter Wine Name"
+                            value={filterName}
+                            onChange={handleFilterNameChange}
                         />
                         <button type="submit">Filter</button>
                     </form>
