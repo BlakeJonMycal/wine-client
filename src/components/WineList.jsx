@@ -5,10 +5,18 @@ import "./WineList.css";
 export const AllWines = () => {
     const [allWines, setAllWines] = useState([]);
     const [filterRegion, setFilterRegion] = useState('');
+    const [filterName, setFilterName] = useState('');
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
-    const getAllWinesFromTheAPI = async (region = '') => {
-        const url = region ? `http://localhost:8000/wines?region=${region}` : "http://localhost:8000/wines";
+    const getAllWinesFromTheAPI = async (region = '', name = '') => {
+        const url = "http://localhost:8000/wines";
+        const params = [];
+
+        if (region) params.push(`region=${region}`);
+        if (name) params.push(`name=${name}`)
+        
+        if (params.length) url += `?${params.join('&')}`
+
         const response = await fetch(url, {
             headers: {
                 "Authorization": `Token ${JSON.parse(localStorage.getItem("wine_token")).token}`
@@ -20,13 +28,17 @@ export const AllWines = () => {
 
     useEffect(() => { getAllWinesFromTheAPI() }, []);
 
-    const handleFilterChange = (event) => {
+    const handleFilterRegionChange = (event) => {
         setFilterRegion(event.target.value);
+    };
+
+    const handleFilterNameChange = (event) => {
+        setFilterName(event.target.value);
     };
 
     const handleFilterSubmit = (event) => {
         event.preventDefault();
-        getAllWinesFromTheAPI(filterRegion);
+        getAllWinesFromTheAPI(filterRegion, filterName);
     };
 
     const displayAllWines = () => {
