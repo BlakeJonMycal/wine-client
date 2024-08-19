@@ -115,19 +115,21 @@ export const WineForm = () => {
                 </select>
             </div>
             <div className="form-group">
-                <label>Style</label>
-                {styles.map(style => (
-                    <div key={style.id} className="checkbox-group">
-                        <input
-                            type="checkbox"
-                            name="styles"
-                            value={style.id}
-                            checked={!!formData.styles.find(s => s === style.id)} 
-                            onChange={handleChange}
-                        />
-                        <label>{style.name}</label>
-                    </div>
-                ))}
+                <label>Styles</label>
+                <div className="checkbox-group-container">
+                    {styles.map(style => (
+                        <div key={style.id} className="checkbox-group">
+                            <input
+                                type="checkbox"
+                                name="styles"
+                                value={style.id}
+                                checked={!!formData.styles.find(s => s === style.id)} 
+                                onChange={handleChange}
+                            />
+                            <label>{style.name}</label>
+                        </div>
+                    ))}
+                </div>
             </div>
             <button type="submit" className="submit-button">Add Wine</button>
         </form>

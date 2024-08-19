@@ -33,10 +33,18 @@
     box-sizing: border-box;
 }
 
+.checkbox-group-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .checkbox-group {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-right: 1em;
+    margin-bottom: 10px;
+    width: calc(15% - 10px);
 }
 
 .checkbox-group input {
