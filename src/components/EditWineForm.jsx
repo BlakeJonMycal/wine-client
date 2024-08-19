@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './EditWineForm.css'; // Import the CSS file
+import './EditWineForm.css'; 
 
 export const EditWineForm = () => {
     const { wineId } = useParams();
@@ -140,18 +140,20 @@ export const EditWineForm = () => {
             </div>
             <div className="form-group">
                 <label>Style</label>
-                {styles.map(style => (
-                    <div key={style.id} className="checkbox-group">
-                        <input
-                            type="checkbox"
-                            name="styles"
-                            value={style.id}
-                            checked={formData.styles.includes(style.id)}
-                            onChange={handleChange}
-                        />
-                        <label>{style.name}</label>
-                    </div>
-                ))}
+                <div className="checkbox-group-container">
+                    {styles.map(style => (
+                        <div key={style.id} className="checkbox-group">
+                            <input
+                                type="checkbox"
+                                name="styles"
+                                value={style.id}
+                                checked={formData.styles.includes(style.id)}
+                                onChange={handleChange}
+                            />
+                            <label>{style.name}</label>
+                        </div>
+                    ))}
+                </div>
             </div>
             <button type="submit" className="submit-button">Update Wine</button>
         </form>
