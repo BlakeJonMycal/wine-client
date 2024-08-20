@@ -6,6 +6,8 @@ export const AllWines = () => {
     const [allWines, setAllWines] = useState([]);
     const [filterRegion, setFilterRegion] = useState('');
     const [filterName, setFilterName] = useState('');
+    const [styles, setStyles] = useState([]);
+    const [selectedStyles, setSelectedStyles] = useState([]);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     const getAllWinesFromTheAPI = async (region = '', name = '') => {
