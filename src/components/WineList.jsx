@@ -28,7 +28,20 @@ export const AllWines = () => {
         setAllWines(parsedJSONString);
     };
 
-    useEffect(() => { getAllWinesFromTheAPI() }, []);
+    const getStylesFromTheApi = async () => {
+        const response = await fetch ("http://localhost:8000/styles", {
+            headers: {
+                "Authorization": `Token ${JSON.parse(localStorage.getItem("wine_token")).token}`
+            }
+        });
+        const stylesData = await response.json();
+        setStyles(stylesData);
+    }
+
+    useEffect(() => { 
+        getAllWinesFromTheAPI() 
+        getStylesFromTheApi()
+    }, []);
 
     const handleFilterRegionChange = (event) => {
         setFilterRegion(event.target.value);
@@ -37,6 +50,14 @@ export const AllWines = () => {
     const handleFilterNameChange = (event) => {
         setFilterName(event.target.value);
     };
+
+    const handleStyleChance = (event) => {
+        const value = Array.from(
+            event.target.selectedOptions,
+            (option) => option.value
+        );
+        setSelectedStyles(value);
+    }
 
     const handleFilterSubmit = (event) => {
         event.preventDefault();
