@@ -10,12 +10,15 @@ export const AllWines = () => {
     const [selectedStyles, setSelectedStyles] = useState([]);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
-    const getAllWinesFromTheAPI = async (region = '', name = '') => {
+    const getAllWinesFromTheAPI = async (region = '', name = '', selectedStyles = []) => {
         let url = "http://localhost:8000/wines";
         const params = [];
 
         if (region) params.push(`region=${region}`);
-        if (name) params.push(`name=${name}`)
+        if (name) params.push(`name=${name}`);
+        if (selectedStyles.length) {
+            selectedStyles.forEach(style => params.push(`styles=${style}`));
+        }
         
         if (params.length) url += `?${params.join('&')}`
 
@@ -51,7 +54,7 @@ export const AllWines = () => {
         setFilterName(event.target.value);
     };
 
-    const handleStyleChance = (event) => {
+    const handleStyleChange = (event) => {
         const value = Array.from(
             event.target.selectedOptions,
             (option) => option.value
@@ -61,7 +64,7 @@ export const AllWines = () => {
 
     const handleFilterSubmit = (event) => {
         event.preventDefault();
-        getAllWinesFromTheAPI(filterRegion, filterName);
+        getAllWinesFromTheAPI(filterRegion, filterName, selectedStyles);
     };
 
     const displayAllWines = () => {
@@ -105,6 +108,18 @@ export const AllWines = () => {
                             value={filterName}
                             onChange={handleFilterNameChange}
                         />
+                        <select
+                            multiple
+                            value={selectedStyles}
+                            onChange={handleStyleChange}
+                            className="style-select"
+                        >
+                            {styles.map(style => (
+                                <option key={style.id} value={style.id}>
+                                    {style.name}
+                                </option>
+                            ))}
+                        </select>
                         <button type="submit">Filter</button>
                     </form>
                 )}
